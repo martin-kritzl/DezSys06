@@ -6,7 +6,7 @@ Die Übung soll die Grundlagen von verteilte Transaktionen mit Hilfe eines prakt
 
 Implementieren Sie in JAVA einen Transaktionsmanager, der Befehle an mehrer Stationen weitergibt und diese koordiniert.  
 Mit Hilfe des 2-Phase-Commit Protokolls sollen die Transaktionen und die Antwort der Stationen verwaltet werden.  
-Der Befehl kann beliebig gewaehlt werden und soll eine Datenquelle (Datenbank oder Datei oder Message Queue) abfragen oder veändern.
+Der Befehl kann beliebig gewählt werden und soll eine Datenquelle (Datenbank oder Datei oder Message Queue) abfragen oder veändern.
 
 Die Kommunikation zwischen Transaktionsmanagers und der Stationen soll mit Hilfe einer Übertragungsmethode 
 (IPC, RPC, Java RMI, JMS, etc) aus dem letzten Schuljahr umgesetzt werden.
