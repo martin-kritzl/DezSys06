@@ -1,4 +1,4 @@
-package at.sgeyer.dezsys07.jms;
+package at.sgeyer.dezsys07.manager.jms;
 
 import org.apache.commons.lang3.Validate;
 

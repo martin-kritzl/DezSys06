@@ -1,4 +1,4 @@
-package at.sgeyer.dezsys07;
+package at.sgeyer.dezsys07.manager;
 
 public class Main {
 

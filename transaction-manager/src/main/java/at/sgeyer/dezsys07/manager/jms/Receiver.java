@@ -1,7 +1,6 @@
-package at.sgeyer.dezsys07.jms;
+package at.sgeyer.dezsys07.manager.jms;
 
-import at.sgeyer.dezsys07.data.Message;
-
+import at.sgeyer.dezsys07.manager.data.Message;
 import java.util.List;
 
 public class Receiver implements Runnable {

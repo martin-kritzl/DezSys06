@@ -4,8 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>at.sgeyer.dezsys</groupId>
-    <artifactId>dezsys06</artifactId>
+    <groupId>at.sgeyer.dezsys06</groupId>
+    <artifactId>parent</artifactId>
+    <packaging>pom</packaging>
     <version>1.0</version>
 
     <developers>
@@ -15,6 +16,10 @@
             <email>sgeyer@student.tgm.ac.at</email>
         </developer>
     </developers>
+    <modules>
+        <module>transaction-manager</module>
+        <module>station</module>
+    </modules>
 
     <dependencies>
         <dependency>
