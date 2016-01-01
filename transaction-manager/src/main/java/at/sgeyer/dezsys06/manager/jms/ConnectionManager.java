@@ -1,4 +1,4 @@
-package at.sgeyer.dezsys07.manager.jms;
+package at.sgeyer.dezsys06.manager.jms;
 
 
 import org.apache.activemq.ActiveMQConnectionFactory;
@@ -17,18 +17,12 @@ public class ConnectionManager {
             ConnectionFactory connectionFactory = new ActiveMQConnectionFactory(
                     Configuration.getInstance().getUsername(),
                     Configuration.getInstance().getPassword(),
-                    Configuration.getInstance().getHost());
+                    Configuration.getInstance().getHost()
+            );
 
             // Create the connection with the given data
             c = connectionFactory.createConnection();
             c.start();
-
-//        //Receiver und Sender initialisieren
-//        this.reciever = new ChatReceiver(this.connection, conf.getSystemName(), this.username);
-//        this.sender = new ChatSender(this.connection, conf.getSystemName());
-//
-//        //Receiver-Thread starten
-//        new Thread(this.reciever).start();
         } catch (Exception e) {
             e.printStackTrace();
         }

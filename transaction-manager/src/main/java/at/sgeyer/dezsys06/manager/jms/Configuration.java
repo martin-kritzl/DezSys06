@@ -1,6 +1,4 @@
-package at.sgeyer.dezsys07.manager.jms;
-
-import org.apache.commons.lang3.Validate;
+package at.sgeyer.dezsys06.manager.jms;
 
 public class Configuration {
 
@@ -10,6 +8,8 @@ public class Configuration {
     private String password;
     private String host;
     private String name;
+
+    private String topicName = "dezsys06";
 
     private Configuration() {
     }
@@ -22,41 +22,42 @@ public class Configuration {
     }
 
     public String getUsername() {
-        Validate.notNull(this.username);
         return username;
     }
 
     public void setUsername(String username) {
-        Validate.notNull(username);
         this.username = username;
     }
 
     public String getPassword() {
-        Validate.notNull(this.password);
         return password;
     }
 
     public void setPassword(String password) {
-        Validate.notNull(password);
         this.password = password;
     }
 
     public String getHost() {
-        Validate.notNull(this.host);
         return host;
     }
 
     public void setHost(String host) {
-        Validate.notNull(host);
         this.host = host;
     }
 
     public String getName() {
-        Validate.notNull(this.name);
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getTopicName() {
+        return topicName;
+    }
+
+    public void setTopicName(String topicName) {
+        this.topicName = topicName;
     }
 }

@@ -111,4 +111,8 @@ dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
 
+# custom
+
+uml.dia
+
 # Created by .ignore support plugin (hsz.mobi)
