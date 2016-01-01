@@ -16,13 +16,13 @@ public class Receiver implements Runnable {
     private Session session;
     private MessageConsumer consumer;
 
-    public Receiver() {
+    public Receiver(String topic) {
         // Concurrent implementation
         this.messages = new CopyOnWriteArrayList<>();
 
         try {
             this.session = ConnectionManager.getConnection().createSession(false, Session.AUTO_ACKNOWLEDGE);
-            Destination destination = this.session.createTopic(Configuration.getInstance().getTopicName());
+            Destination destination = this.session.createTopic(topic);
 
             this.consumer = this.session.createConsumer(destination);
         } catch (JMSException e) {

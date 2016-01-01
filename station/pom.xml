@@ -22,6 +22,11 @@
             <artifactId>postgresql</artifactId>
             <version>9.1-901-1.jdbc4</version>
         </dependency>
+        <dependency>
+            <groupId>at.sgeyer.dezsys06</groupId>
+            <artifactId>transaction-manager</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
 
 </project>

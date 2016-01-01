@@ -9,10 +9,10 @@ public class Sender {
     private Session session;
     private MessageProducer producer;
 
-    public Sender() {
+    public Sender(String topic) {
         try {
             this.session = ConnectionManager.getConnection().createSession(false, Session.AUTO_ACKNOWLEDGE);
-            Destination destination = session.createTopic(Configuration.getInstance().getTopicName());
+            Destination destination = session.createTopic(topic);
 
             this.producer = session.createProducer(destination);
             this.producer.setDeliveryMode(DeliveryMode.NON_PERSISTENT);
@@ -23,7 +23,7 @@ public class Sender {
 
     public void broadcast(Message message) {
         try {
-            // Send the message to those who listen
+            // Send the message to those who listen to the topic
             ObjectMessage objectMessage = session.createObjectMessage(message);
             producer.send(objectMessage);
         } catch (JMSException e) {

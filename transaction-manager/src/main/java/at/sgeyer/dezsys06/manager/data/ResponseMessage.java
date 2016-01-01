@@ -42,7 +42,7 @@ public class ResponseMessage implements Message {
     public String toString() {
         return "Message{" +
                 "type=" + getType() +
-                "phase=" + phase +
+                ", phase=" + getPhase() +
                 ", result=" + result +
                 '}';
     }
