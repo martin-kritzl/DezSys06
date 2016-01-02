@@ -5,7 +5,6 @@ import at.sgeyer.dezsys06.manager.data.RequestMessage;
 import at.sgeyer.dezsys06.manager.jms.Configuration;
 import at.sgeyer.dezsys06.manager.jms.Receiver;
 import at.sgeyer.dezsys06.manager.jms.Sender;
-import jdk.nashorn.internal.runtime.regexp.joni.Config;
 import org.apache.activemq.ActiveMQConnection;
 
 public class Main {
@@ -16,8 +15,8 @@ public class Main {
         cfg.setPassword(ActiveMQConnection.DEFAULT_PASSWORD);
         cfg.setHost("tcp://192.168.30.200:61616");
 
-        Sender sender = new Sender(Configuration.getInstance().getRequestTopicName());
-        Receiver receiver = new Receiver(Configuration.getInstance().getResponseTopicName());
+        Sender sender = new Sender(Configuration.getInstance().getRequestMessageTopicName());
+        Receiver receiver = new Receiver(Configuration.getInstance().getResponseMessageTopicName());
 
         Message message = new RequestMessage(Message.Phase.PREPARE);
         sender.broadcast(message);

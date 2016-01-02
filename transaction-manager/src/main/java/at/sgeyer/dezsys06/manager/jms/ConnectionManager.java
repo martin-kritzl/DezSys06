@@ -20,13 +20,14 @@ public class ConnectionManager {
                     Configuration.getInstance().getHost()
             );
 
-            // Create the connection with the given data
+            // Create the connection with the given data and start it
             c = connectionFactory.createConnection();
             c.start();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+        //TODO use catch clause
         // Make sure no exception occurred
         Validate.notNull(c);
 

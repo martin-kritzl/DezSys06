@@ -9,8 +9,8 @@ public class Configuration {
     private String host;
     private String name;
 
-    private String requestTopicName = "dezsys06_request";
-    private String responseTopicName = "dezsys06_response";
+    private String requestMessageTopicName = "dezsys06_request";
+    private String responseMessageTopicName = "dezsys06_response";
 
     private Configuration() {
     }
@@ -54,19 +54,19 @@ public class Configuration {
         this.name = name;
     }
 
-    public String getRequestTopicName() {
-        return requestTopicName;
+    public String getRequestMessageTopicName() {
+        return requestMessageTopicName;
     }
 
-    public void setRequestTopicName(String requestTopicName) {
-        this.requestTopicName = requestTopicName;
+    public void setRequestMessageTopicName(String requestMessageTopicName) {
+        this.requestMessageTopicName = requestMessageTopicName;
     }
 
-    public String getResponseTopicName() {
-        return responseTopicName;
+    public String getResponseMessageTopicName() {
+        return responseMessageTopicName;
     }
 
-    public void setResponseTopicName(String responseTopicName) {
-        this.responseTopicName = responseTopicName;
+    public void setResponseMessageTopicName(String responseMessageTopicName) {
+        this.responseMessageTopicName = responseMessageTopicName;
     }
 }
