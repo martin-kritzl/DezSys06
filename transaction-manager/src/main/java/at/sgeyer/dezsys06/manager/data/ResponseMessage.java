@@ -46,7 +46,17 @@ public class ResponseMessage implements Message {
     public enum Result {
         POSITIVE,
         NEGATIVE,
-        TIMEOUT
+        TIMEOUT;
+
+        public static Result getResult(Boolean bool) {
+            if (bool == null) {
+                return TIMEOUT;
+            } else if (bool) {
+                return POSITIVE;
+            } else {
+                return NEGATIVE;
+            }
+        }
     }
 
     @Override

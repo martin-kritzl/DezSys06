@@ -78,6 +78,10 @@ public abstract class DBMS {
         return false;
     }
 
+    public Connection getConnection() {
+        return connection;
+    }
+
     public Logger getLogger() {
         return logger;
     }
