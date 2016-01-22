@@ -10,9 +10,11 @@ package at.sgeyer.dezsys06.manager.data;
 public class RequestMessage implements Message {
 
     private Phase phase;
+    private String sender;
 
-    public RequestMessage(Phase phase) {
+    public RequestMessage(String sender, Phase phase) {
         this.phase = phase;
+        this.sender = sender;
     }
 
     @Override
@@ -25,11 +27,25 @@ public class RequestMessage implements Message {
         return this.phase;
     }
 
+    public void setPhase(Phase phase) {
+        this.phase = phase;
+    }
+
+    @Override
+    public String getSender() {
+        return this.sender;
+    }
+
+    public void setSender(String sender) {
+        this.sender = sender;
+    }
+
     @Override
     public String toString() {
         return "Message{" +
-                "phase=" + getPhase() +
-                ", type=" + getType() +
+                "type=" + getType() +
+                ", sender=" + getSender() +
+                ", phase=" + getPhase() +
                 "}";
     }
 }

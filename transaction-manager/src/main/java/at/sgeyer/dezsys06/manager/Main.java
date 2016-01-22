@@ -18,14 +18,8 @@ public class Main {
         Sender sender = new Sender(Configuration.getInstance().getRequestMessageTopicName());
         Receiver receiver = new Receiver(Configuration.getInstance().getResponseMessageTopicName());
 
-        Message message = new RequestMessage(Message.Phase.PREPARE);
+        Message message = new RequestMessage("manager", Message.Phase.PREPARE);
         sender.broadcast(message);
-
-        try {
-            Thread.sleep(200);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
         System.out.println(receiver.getMessages());
 

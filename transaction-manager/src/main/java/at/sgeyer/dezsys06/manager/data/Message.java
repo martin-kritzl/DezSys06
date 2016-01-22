@@ -23,6 +23,13 @@ public interface Message extends Serializable {
      */
     Phase getPhase();
 
+    /**
+     * A String to identify the sender
+     *
+     * @return The name if the sender
+     */
+    String getSender();
+
     enum Phase {
         PREPARE,
         COMMIT

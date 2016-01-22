@@ -4,8 +4,10 @@ public class ResponseMessage implements Message {
 
     private Phase phase;
     private Result result;
+    private String sender;
 
-    public ResponseMessage(Phase phase, Result result) {
+    public ResponseMessage(String sender, Phase phase, Result result) {
+        this.sender = sender;
         this.phase = phase;
         this.result = result;
     }
@@ -25,6 +27,15 @@ public class ResponseMessage implements Message {
 
     public void setPhase(Phase phase) {
         this.phase = phase;
+    }
+
+    @Override
+    public String getSender() {
+        return this.sender;
+    }
+
+    public void setSender(String sender) {
+        this.sender = sender;
     }
 
     @Override

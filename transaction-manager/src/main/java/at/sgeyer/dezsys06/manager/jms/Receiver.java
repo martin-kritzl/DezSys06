@@ -1,6 +1,5 @@
 package at.sgeyer.dezsys06.manager.jms;
 
-import at.sgeyer.dezsys06.manager.data.*;
 import at.sgeyer.dezsys06.manager.data.Message;
 
 import javax.jms.*;
@@ -16,6 +15,8 @@ public class Receiver implements Runnable {
     private Session session;
     private MessageConsumer consumer;
 
+    private Callback callback;
+
     public Receiver(String topic) {
         // Concurrent implementation
         this.messages = new CopyOnWriteArrayList<>();
@@ -25,6 +26,7 @@ public class Receiver implements Runnable {
             Destination destination = this.session.createTopic(topic);
 
             this.consumer = this.session.createConsumer(destination);
+
         } catch (JMSException e) {
             e.printStackTrace();
         }
@@ -32,17 +34,23 @@ public class Receiver implements Runnable {
         new Thread(this).start();
     }
 
+    public Receiver(String topic, Callback callback) {
+        this(topic);
+        this.callback = callback;
+    }
+
     public void run() {
-        while(this.lookForMessages) {
+        while (this.lookForMessages) {
             try {
                 // Receive Method
                 ObjectMessage objectMessage = (ObjectMessage) consumer.receive();
                 if (objectMessage != null) {
-                    Message messageRaw = (Message) objectMessage.getObject();
+                    Message message = (Message) objectMessage.getObject();
 
-                    if (messageRaw.getType() == Message.Type.REQUEST) {
-                        this.messages.add(messageRaw);
-                    }
+                    this.messages.add(message);
+
+                    if (this.callback != null)
+                        this.callback.messageCallback(message);
 
                     // Message was received successfully
                     objectMessage.acknowledge();
@@ -66,5 +74,9 @@ public class Receiver implements Runnable {
 
     public List<Message> getMessages() {
         return messages;
+    }
+
+    public interface Callback {
+        void messageCallback(Message message);
     }
 }
