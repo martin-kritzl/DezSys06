@@ -31,6 +31,7 @@ public interface Message extends Serializable {
     String getSender();
 
     enum Phase {
+        INIT,
         PREPARE,
         COMMIT
     }

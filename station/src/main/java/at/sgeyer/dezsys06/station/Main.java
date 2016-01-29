@@ -1,6 +1,7 @@
 package at.sgeyer.dezsys06.station;
 
 import at.sgeyer.dezsys06.manager.data.Message;
+import at.sgeyer.dezsys06.manager.data.RequestBodyMessage;
 import at.sgeyer.dezsys06.manager.data.ResponseMessage;
 import at.sgeyer.dezsys06.manager.jms.Configuration;
 import at.sgeyer.dezsys06.manager.jms.Receiver;
@@ -14,6 +15,8 @@ public class Main {
 
     private Sender sender;
     private Receiver receiver;
+
+    private String name;
 
     public Main(String[] args) {
         Configuration cfg = Configuration.getInstance();
@@ -38,13 +41,22 @@ public class Main {
             if (message.getPhase() == Message.Phase.PREPARE) {
                 Main.this.sender.broadcast(
                         new ResponseMessage(
-                                "",
+                                Main.this.name,
                                 Message.Phase.PREPARE,
                                 ResponseMessage.Result.getResult(Main.this.accessor.canCommit())
                         )
                 );
             } else if (message.getPhase() == Message.Phase.COMMIT) {
-//                if (message instanceof )
+                if (message instanceof RequestBodyMessage) {
+                    RequestBodyMessage.RequestBody body = ((RequestBodyMessage) message).getBody();
+                    Main.this.sender.broadcast(
+                            new ResponseMessage(
+                                    Main.this.name,
+                                    Message.Phase.COMMIT,
+                                    ResponseMessage.Result.getResult(Main.this.accessor.executeSQLString(body.getSQLString()))
+                            )
+                    );
+                }
             }
         }
     }
