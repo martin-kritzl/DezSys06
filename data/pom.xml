@@ -9,19 +9,6 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>transaction-manager</artifactId>
-
-    <dependencies>
-        <dependency>
-            <groupId>at.sgeyer.dezsys06</groupId>
-            <artifactId>data</artifactId>
-            <version>1.0</version>
-        </dependency>
-        <dependency>
-            <groupId>at.sgeyer.dezsys06</groupId>
-            <artifactId>jms</artifactId>
-            <version>1.0</version>
-        </dependency>
-    </dependencies>
+    <artifactId>data</artifactId>
 
 </project>

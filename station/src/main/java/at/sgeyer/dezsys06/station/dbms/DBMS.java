@@ -56,9 +56,9 @@ public abstract class DBMS {
      * @param query The SQL Statement that will be queried
      * @return Returns the result for the query if successful, otherwise null
      */
-    public ResultSet query(String query) throws DBMSException, SQLException {
+    public boolean query(String query) throws DBMSException, SQLException {
         if (isOpen()) {
-            return this.connection.prepareStatement(query).executeQuery();
+            return this.connection.prepareStatement(query).execute();
         } else throw new DBMSException("An opened connection is required for querying");
     }
 

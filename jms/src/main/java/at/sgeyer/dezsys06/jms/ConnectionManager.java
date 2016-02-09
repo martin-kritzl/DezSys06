@@ -1,4 +1,4 @@
-package at.sgeyer.dezsys06.manager.jms;
+package at.sgeyer.dezsys06.jms;
 
 
 import org.apache.activemq.ActiveMQConnectionFactory;

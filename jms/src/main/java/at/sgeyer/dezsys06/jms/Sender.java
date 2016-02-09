@@ -1,6 +1,6 @@
-package at.sgeyer.dezsys06.manager.jms;
+package at.sgeyer.dezsys06.jms;
 
-import at.sgeyer.dezsys06.manager.data.Message;
+import at.sgeyer.dezsys06.data.Message;
 
 import javax.jms.*;
 

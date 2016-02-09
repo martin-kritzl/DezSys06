@@ -17,28 +17,31 @@ public class DatabaseAccessor {
         this.database = DBMSFactory.getHostnameDBMS(databaseName, logger, hostname, username, password, database, port);
     }
 
-    public boolean canCommit() {
-        try {
-            this.database.getConnection().setAutoCommit(false);
-            this.database.getConnection().setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
-            this.database.getConnection().commit();
-            this.database.getConnection().setAutoCommit(true);
-            return true;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
     public boolean executeSQLString(String sql) {
         try {
             this.database.getConnection().setAutoCommit(false);
             this.database.getConnection().setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
             this.database.query(sql);
-            this.database.getConnection().commit();
-            this.database.getConnection().setAutoCommit(true);
             return true;
         } catch (DBMSException | SQLException e) {
+            //TODO
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean finishTransaction(boolean commit) {
+        try {
+            if (commit) {
+                this.database.getConnection().commit();
+            } else {
+                this.database.getConnection().rollback();
+            }
+
+            this.database.getConnection().setAutoCommit(true);
+            return true;
+        } catch (SQLException e) {
+            //TODO
             e.printStackTrace();
             return false;
         }

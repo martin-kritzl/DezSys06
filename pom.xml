@@ -19,6 +19,8 @@
     <modules>
         <module>transaction-manager</module>
         <module>station</module>
+        <module>data</module>
+        <module>jms</module>
     </modules>
 
     <dependencies>

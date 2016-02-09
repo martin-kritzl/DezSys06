@@ -1,10 +1,8 @@
 package at.sgeyer.dezsys06.manager;
 
-import at.sgeyer.dezsys06.manager.data.Message;
-import at.sgeyer.dezsys06.manager.data.RequestMessage;
-import at.sgeyer.dezsys06.manager.jms.Configuration;
-import at.sgeyer.dezsys06.manager.jms.Receiver;
-import at.sgeyer.dezsys06.manager.jms.Sender;
+import at.sgeyer.dezsys06.jms.Configuration;
+import at.sgeyer.dezsys06.jms.Receiver;
+import at.sgeyer.dezsys06.jms.Sender;
 import org.apache.activemq.ActiveMQConnection;
 
 public class Main {
@@ -18,8 +16,8 @@ public class Main {
         Sender sender = new Sender(Configuration.getInstance().getRequestMessageTopicName());
         Receiver receiver = new Receiver(Configuration.getInstance().getResponseMessageTopicName());
 
-        Message message = new RequestMessage("manager", Message.Phase.PREPARE);
-        sender.broadcast(message);
+//        Message message = new RequestMessage("manager", Message.Phase.PREPARE);
+//        sender.broadcast(message);
 
         System.out.println(receiver.getMessages());
 
