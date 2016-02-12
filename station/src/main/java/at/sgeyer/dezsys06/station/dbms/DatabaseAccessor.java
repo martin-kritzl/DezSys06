@@ -1,4 +1,4 @@
-package at.sgeyer.dezsys06.station;
+package at.sgeyer.dezsys06.station.dbms;
 
 import at.sgeyer.dezsys06.station.dbms.DBMS;
 import at.sgeyer.dezsys06.station.dbms.DBMSException;
@@ -45,6 +45,10 @@ public class DatabaseAccessor {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public void close() {
+        this.database.close();
     }
 
 }

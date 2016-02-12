@@ -23,6 +23,10 @@ public class ResponseMessage implements Message {
         return uuid;
     }
 
+    public Result getResult() {
+        return result;
+    }
+
     public enum Result {
         ACKNOWLEDGED,
         NOT_ACKNOWLEDGED;

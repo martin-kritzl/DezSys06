@@ -1,27 +1,23 @@
 package at.sgeyer.dezsys06.manager;
 
 import at.sgeyer.dezsys06.jms.Configuration;
-import at.sgeyer.dezsys06.jms.Receiver;
-import at.sgeyer.dezsys06.jms.Sender;
 import org.apache.activemq.ActiveMQConnection;
+import org.apache.log4j.Logger;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public Main(String[] args) {
         Configuration cfg = Configuration.getInstance();
         cfg.setUsername(ActiveMQConnection.DEFAULT_USER);
         cfg.setPassword(ActiveMQConnection.DEFAULT_PASSWORD);
         cfg.setHost("tcp://192.168.30.200:61616");
 
-        Sender sender = new Sender(Configuration.getInstance().getRequestMessageTopicName());
-        Receiver receiver = new Receiver(Configuration.getInstance().getResponseMessageTopicName());
+        Logger logger = Logger.getLogger("TransactionManager");
 
-//        Message message = new RequestMessage("manager", Message.Phase.PREPARE);
-//        sender.broadcast(message);
+        TransactionManager manager = new TransactionManager(cfg, logger);
+    }
 
-        System.out.println(receiver.getMessages());
-
-        sender.close();
-        receiver.close();
+    public static void main(String[] args) {
+        new Main(args);
     }
 }
